@@ -1,51 +1,76 @@
-import tkinter
+try:
+    import Tkinter as tk
+except:
+    import tkinter as tk
+    
+    
+class SampleApp(tk.Tk):
+    def __init__(self):
+        tk.Tk.__init__(self)
+        self._frame = None
+        self.switch_frame(StartPage)
 
-window = tkinter.Tk()
-window.title("Frame_Change")
-window.geometry("600x600+200+200")
+    def switch_frame(self, frame_class):
+        new_frame = frame_class(self)
+        if self._frame is not None:
+            self._frame.destroy()
+        self._frame = new_frame
+        self._frame.pack()
 
-frame_main = tkinter.Frame(window) # 메인 화면
-frame1 = tkinter.Frame(window) # 범죄 시간대 화면
-frame2 = tkinter.Frame(window) # 범죄 지역 화면
-frame3 = tkinter.Frame(window) # 예방 방법 화면
-frame4 = tkinter.Frame(window) # 퀴즈 화면
+#메인 페이지
+class StartPage(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        # 메인페이지 인증 문구
+        tk.Label(self, text="Start page", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
+        # 범죄 시간대 확인 버튼
+        Btn1 = tk.Button(self, text="범죄 시간대 확인", height = 3, width = 20,
+                  command=lambda: master.switch_frame(crime_time_zone)).pack()
+        # 범죄 지역 확인 버튼
+        Btn2 = tk.Button(self, text="범죄 지역 확인", height = 3, width = 20,
+                  command=lambda: master.switch_frame(crime_area)).pack()
+        # 예방방법 버튼
+        Btn3 = tk.Button(self, text="예방 방법", height = 3, width = 20,
+                  command=lambda: master.switch_frame(prevention)).pack()
+        # 퀴즈 버튼
+        Btn4 = tk.Button(self, text="퀴즈", height = 3, width = 20,
+                  command=lambda: master.switch_frame(Quiz)).pack() 
+        
+        Btn1.grid(row=1, column=2)
+        Btn2.grid(row=3, column=2)
+        Btn3.grid(row=5, column=2)
+        Btn4.grid(row=7, column=2)
 
-frame_main.grid(row=0, column=0, sticky="nsew")
-frame1.grid(row=0, column=0, sticky="nsew")
-frame2.grid(row=0, column=0, sticky="nsew")
+#범죄 시간 확인 버튼 눌렀을때 뜨는 페이지
+class crime_time_zone(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="Go back to start page",
+                  command=lambda: master.switch_frame(StartPage)).pack()
 
-def openFrame(frame):
-    frame.tkraise()
+#범죄 지역 확인 버튼 눌렀을 때 뜨는 페이지
+class crime_area(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="Go back to start page",
+                  command=lambda: master.switch_frame(StartPage)).pack()
 
-# 메인 -> 루트 화면 전환
-btnToFrame1 = tkinter.Button(frame_main,
-text="Change To Frame1",
-padx=10,
-pady=10,
-command=lambda:[openFrame(frame1)])
+#예방 방법 버튼 눌렀을 때 뜨는 페이지
+class prevention(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="Go back to start page",
+                  command=lambda: master.switch_frame(StartPage)).pack()
+        
+        
+#퀴즈 버튼 눌렀을 때 뜨는 페이지
+class Quiz(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        tk.Button(self, text="Go back to start page",
+                  command=lambda: master.switch_frame(StartPage)).pack()
 
-btnToFrame2 = tkinter.Button(frame_main,
-text="Change To Frame2",
-padx=10,
-pady=10,
-command=lambda:[openFrame(frame2)])
-
-btnToFrame3 = tkinter.Button(frame_main,
-text="Change To Frame3",
-padx=10,
-pady=10,
-command=lambda:[openFrame(frame3)])
-
-btnToFrame4 = tkinter.Button(frame_main,
-text="Change To Frame4",
-padx=10,
-pady=10,
-command=lambda:[openFrame(frame4)])
-
-btnToFrame1.pack()
-btnToFrame2.pack()
-btnToFrame3.pack()
-btnToFrame4.pack()
-
-openFrame(frame_main) # 기본메인화면
-window.mainloop()
+if __name__ == "__main__":
+    app = SampleApp()
+    app.geometry("300x400")
+    app.mainloop()
