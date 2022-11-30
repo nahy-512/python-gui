@@ -1,7 +1,4 @@
-try:
-    import Tkinter as tk
-except:
-    import tkinter as tk
+import tkinter as tk
     
     
 class SampleApp(tk.Tk):
@@ -24,22 +21,22 @@ class StartPage(tk.Frame):
         # 메인페이지 인증 문구
         tk.Label(self, text="Start page", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
         # 범죄 시간대 확인 버튼
-        Btn1 = tk.Button(self, text="범죄 시간대 확인", height = 3, width = 20,
-                  command=lambda: master.switch_frame(crime_time_zone)).pack()
+        tk.Button(self, text="범죄 시간대 확인", height = 3, width = 20,
+                  command=lambda: master.switch_frame(crime_time_zone)).pack(pady=5)
         # 범죄 지역 확인 버튼
-        Btn2 = tk.Button(self, text="범죄 지역 확인", height = 3, width = 20,
-                  command=lambda: master.switch_frame(crime_area)).pack()
+        tk.Button(self, text="범죄 지역 확인", height = 3, width = 20,
+                  command=lambda: master.switch_frame(crime_area)).pack(pady=5)
         # 예방방법 버튼
-        Btn3 = tk.Button(self, text="예방 방법", height = 3, width = 20,
-                  command=lambda: master.switch_frame(prevention)).pack()
+        tk.Button(self, text="예방 방법", height = 3, width = 20,
+                  command=lambda: master.switch_frame(prevention)).pack(pady=5)
         # 퀴즈 버튼
-        Btn4 = tk.Button(self, text="퀴즈", height = 3, width = 20,
-                  command=lambda: master.switch_frame(Quiz)).pack() 
+        tk.Button(self, text="퀴즈", height = 3, width = 20,
+                  command=lambda: master.switch_frame(Quiz)).pack(pady=5) 
         
-        Btn1.grid(row=1, column=2)
-        Btn2.grid(row=3, column=2)
-        Btn3.grid(row=5, column=2)
-        Btn4.grid(row=7, column=2)
+        # Btn1.grid(row=1, column=2)
+        # Btn2.grid(row=3, column=2)
+        # Btn3.grid(row=5, column=2)
+        # Btn4.grid(row=7, column=2)
 
 #범죄 시간 확인 버튼 눌렀을때 뜨는 페이지
 class crime_time_zone(tk.Frame):
@@ -72,5 +69,5 @@ class Quiz(tk.Frame):
 
 if __name__ == "__main__":
     app = SampleApp()
-    app.geometry("300x400")
+    app.geometry("300x350")
     app.mainloop()
