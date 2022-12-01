@@ -38,8 +38,4 @@ q3.pack(); rdo3_1.pack(); rdo3_2.pack()
 q4.pack(); rdo4_1.pack(); rdo4_2.pack()
 
 
-
-
-
-
 win.mainloop()
