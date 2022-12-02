@@ -45,24 +45,13 @@ def returnMinMax(dict):
     print("dict={}" .format(dict))
     min = 10000000; max = -1
     for x,y in dict.items():
-        #print("x={}, y={}" .format(x,y))
         if (y > max):
             max = y
             maxKey = x
         if (y < min):
             min = y
             minKey = x
-    #print("min = {}, max = {}" .format(min, max))
     myTuple = (min, max) # min, max를 튜플로 저장
     myKeyTuple = (minKey, maxKey)
     
-    #print(myTuple)
     return myKeyTuple
-
-
-# dict = readData('crime_time.csv')
-#print(dict)
-# returnMinMax(dict)
-#print(returnMinMax(dict))
-# printKey = returnValue(readData('crime_time.csv'))
-# print(printKey)

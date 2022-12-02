@@ -1,6 +1,7 @@
 from tkinter import*
 import matplotlib.pyplot as plt
 import fileInput_module
+import numpy as np
 
 def goToTimeChart(): # 범죄 시간대 차트 그리기
     # matplotlib
@@ -11,11 +12,11 @@ def goToTimeChart(): # 범죄 시간대 차트 그리기
     value = fileInput_module.returnDictValue(dict)
     print(value)
 
-    plt.plot(key, value)
+    plt.plot(key, value, 'bo-')
     plt.title('Crime Time Chart') # 제목
     plt.grid(True) # 그리드
-    plt.xlabel('time')
-    plt.ylabel('value')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
     plt.legend()
     
     plt.show()
@@ -25,15 +26,17 @@ def goToAreaChart(): # 범죄 지역 차트 그리기
     print('Button Click')
     dict = fileInput_module.readData('crime_area.csv')
     print(dict)
+    x = np.arange(len(dict))
+
     key = fileInput_module.returnDictKey(dict)
     value = fileInput_module.returnDictValue(dict)
     print(value)
 
-    plt.scatter(key, value)
+    plt.bar(x, value, color='gray')
+    plt.xticks(x, key)
     plt.title('Crime Area Chart') # 제목
-    plt.grid(True) # 그리드
-    plt.xlabel('area')
-    plt.ylabel('value')
+    plt.xlabel('Area')
+    plt.ylabel('Value')
     plt.legend()
     
     plt.show()
