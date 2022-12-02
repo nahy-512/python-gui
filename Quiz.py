@@ -21,6 +21,7 @@ answers = [['1337','1366','1398','1388', '1366'],
     
 answer = 0    
 index = -1
+count =0
     
 def next_question():
     global answer, index 
@@ -55,11 +56,15 @@ def next_question():
     
 #정답 체크
 def check_answer(idx):
+    global count
     idx = int(idx)
     if(answers[index][idx] == answers[index][4]):
         buttons[idx].config(bg=CORRECT_COLOR)
         #맞추면 자동으로 다음으로 넘어가기 (1000 = 1초)
         window.after(1000, next_question)
+        count = count + 1
+        if(count == 4):
+            tk.Button(self, text="Go back to main page", command=lambda: master.switch_frame(GUI.StartPage)).pack()
         
     else:
         buttons[idx].config(bg=WRONG_COLOR)
@@ -84,11 +89,12 @@ for i in range(4):
     btn.pack(pady = 10)
     buttons.append(btn)
 
-# next_btn = Button(window, text="다음 문제", width=15, height=2,
-#                   command=next_question,
-#                   font=("나눔바른펜", 15, "bold"), bg="yellow")
 
-# next_btn.pack(pady = 30)
+next_btn = Button(window, text="다음 문제", width=15, height=2,
+                   command=next_question,
+                   font=("나눔바른펜", 15, "bold"), bg="yellow")
+
+next_btn.pack(pady = 30)
 
 
 next_question()
