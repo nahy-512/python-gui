@@ -1,5 +1,5 @@
 import tkinter
-
+import gui_module
 #import matplotlib
 
 try:
@@ -54,16 +54,19 @@ class StartPage(tk.Frame):
 class crime_time_zone(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        gui_module.frame_crime_time(self) # 범죄 시간 화면
         tk.Button(self, text="Go back to start page",
                   command=lambda: master.switch_frame(StartPage),
                   anchor="center", width = 17, relief="ridge",
                   activebackground='#cccccc', cursor="target").pack()
         tk.Label(width=1)
+        
 
 #범죄 지역 확인 버튼 눌렀을 때 뜨는 페이지
 class crime_area(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        gui_module.frame_cirme_area(self) # 범죄 지역 화면
         tk.Button(self, text="Go back to start page",
                   command=lambda: master.switch_frame(StartPage),
                   anchor="center", width = 17, relief="ridge",
@@ -78,7 +81,7 @@ class prevention(tk.Frame):
                   anchor="center", width = 17, relief="ridge",
                   activebackground='#cccccc', cursor="target").pack()
         
-        
+
 #퀴즈 버튼 눌렀을 때 뜨는 페이지
 class Quiz(tk.Frame):
     def __init__(self, master):
