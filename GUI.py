@@ -1,5 +1,6 @@
 import tkinter
 import gui_module
+import quiz_backup
 #import matplotlib
 
 try:
@@ -86,6 +87,8 @@ class prevention(tk.Frame):
 class Quiz(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        #gui_module.frame_quiz(self) # 퀴즈 화면
+        quiz_backup.frame_quiz(self)
         tk.Button(self, text="Go back to start page",
                   command=lambda: master.switch_frame(StartPage),
                   anchor="center", width = 17, relief="ridge",

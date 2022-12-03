@@ -113,16 +113,16 @@ def frame_quiz(name):
     v4 = StringVar(frame)
 
     option1 = Button(frame, bg=BTN_COLOR,width=45, height=2, font=('나눔바른펜', 15, "bold"),
-                         command = lambda : checkAnswer(option1, index, correct))
+                         command = lambda : checkAnswer(option1, index))
     option2 = Button(frame, bg=BTN_COLOR,width=45, height=2, font=('나눔바른펜', 15, "bold"), 
-                         command = lambda : checkAnswer(option2, index, correct))
+                         command = lambda : checkAnswer(option2, index))
     option3 = Button(frame, bg=BTN_COLOR,width=45, height=2, font=('나눔바른펜', 15, "bold"), 
-                         command = lambda : checkAnswer(option3, index, correct))
+                         command = lambda : checkAnswer(option3, index))
     option4 = Button(frame, bg=BTN_COLOR,width=45, height=2, font=('나눔바른펜', 15, "bold"),
-                         command = lambda : checkAnswer(option4, index, correct))
+                         command = lambda : checkAnswer(option4, index))
 
     button_next = Button(frame, text='Next',bg='Orange', width=15, height=2, font=('나눔바른펜', 15, "bold"), 
-                        command = lambda : displayNextQuestion(index, correct))
+                        command = lambda : displayNextQuestion(index))
 
     frame.pack(fill="both", expand="true")
     question_label.grid(row=0, column=0)
@@ -149,19 +149,19 @@ def frame_quiz(name):
     # create a function to check the selected answer
     def checkAnswer(radio, index, correct):
         # global correct, index
-        print("checkAnswer ",index, correct,"/4")
+        print("checkAnswer ",index)
         # the 4th item is the correct answer
         # we will check the user selected answer with the 4th item
         if radio['text'] == options[index][4]:
             correct +=1
         index +=1
-        disableButtons('disable')
+    disableButtons('disable')
 
 
     # create a function to display the next question
-    def displayNextQuestion(index, correct):
+    def displayNextQuestion(index):
         #global index
-        #global correct
+        global correct
 
         if button_next['text'] == 'Restart The Quiz':
             correct = 0
@@ -199,4 +199,4 @@ def frame_quiz(name):
                 button_next['text'] = 'Check the Results'
 
 
-    displayNextQuestion(index, correct)
+    displayNextQuestion(index - 1)
