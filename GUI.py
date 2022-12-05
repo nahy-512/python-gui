@@ -1,5 +1,14 @@
+BGCOLOR = "#21325E"
+CORRECT_COLOR = "green"
+WRONG_COLOR = "red"
+BTN_COLOR = "#F0F0F0"
+
+
 import tkinter as tk
-    
+import csv
+from tkinter import *
+import random
+import GUI
     
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -64,6 +73,7 @@ class prevention(tk.Frame):
 class Quiz(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        
         tk.Button(self, text="Go back to start page",
                   command=lambda: master.switch_frame(StartPage)).pack()
 
