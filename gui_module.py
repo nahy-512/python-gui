@@ -63,7 +63,7 @@ def frame_crime_time(name): # name: frame name
     plotBtn.pack()
 
 # 범죄 지역 화면
-def frame_cirme_area(name):
+def frame_crime_area(name):
     print("Crime Area Frame")
     titleLb = Label(name, text='Crime Area\n', font=('Helvetica', 25))
     titleLb.pack()
